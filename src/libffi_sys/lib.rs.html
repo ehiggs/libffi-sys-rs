@@ -76,6 +76,10 @@
 <span id="31">31</span>
 <span id="32">32</span>
 <span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Low-level Rust bindings for [libffi](https://sourceware.org/libffi/)</span>
 <span class='doccomment'>//!</span>
@@ -97,7 +101,7 @@
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! ```toml</span>
 <span class='doccomment'>//! [dependencies]</span>
-<span class='doccomment'>//! libffi-sys = &quot;0.5.1&quot;</span>
+<span class='doccomment'>//! libffi-sys = &quot;0.5.2&quot;</span>
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! to your `Cargo.toml` and</span>
@@ -108,8 +112,12 @@
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! to your crate root.</span>
 
-<span class='kw'>mod</span> <span class='ident'>generated</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>generated</span>::<span class='kw-2'>*</span>;
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>non_camel_case_types</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>non_snake_case</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>non_upper_case_globals</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>improper_ctypes</span>)]</span>
+
+<span class='macro'>include</span><span class='macro'>!</span>(<span class='macro'>concat</span><span class='macro'>!</span>(<span class='macro'>env</span><span class='macro'>!</span>(<span class='string'>&quot;OUT_DIR&quot;</span>), <span class='string'>&quot;/generated.rs&quot;</span>));
 </pre>
 </section>
     <section id='search' class="content hidden"></section>
