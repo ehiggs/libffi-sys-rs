@@ -17,7 +17,7 @@
     
     
 </head>
-<body class="rustdoc">
+<body class="rustdoc source">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -43,7 +43,7 @@
         </form>
     </nav>
 
-    <section id='main' class="content source"><pre class="line-numbers"><span id="1"> 1</span>
+    <section id='main' class="content"><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
 <span id="4"> 4</span>
@@ -80,44 +80,48 @@
 <span id="35">35</span>
 <span id="36">36</span>
 <span id="37">37</span>
-</pre><pre class='rust '>
-<span class='doccomment'>//! Low-level Rust bindings for [libffi](https://sourceware.org/libffi/)</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! The C libffi library provides two main facilities: assembling calls</span>
-<span class='doccomment'>//! to functions dynamically, and creating closures that can be called</span>
-<span class='doccomment'>//! as ordinary C functions. This is an undocumented wrapper, generated</span>
-<span class='doccomment'>//! by bindgen, intended as the basis for higher-level bindings, but you</span>
-<span class='doccomment'>//! can see the [C libffi</span>
-<span class='doccomment'>//! documentation](http://www.atmark-techno.com/~yashi/libffi.html).</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! See [the libffi crate](https://crates.io/crates/libffi/) for a</span>
-<span class='doccomment'>//! higher-level API.</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! # Usage</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! Make sure you have a working make, C compiler, automake, and autoconf</span>
-<span class='doccomment'>//! first. It’s [on crates.io](https://crates.io/crates/libffi-sys), so you</span>
-<span class='doccomment'>//! can add</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! ```toml</span>
-<span class='doccomment'>//! [dependencies]</span>
-<span class='doccomment'>//! libffi-sys = &quot;0.5.2&quot;</span>
-<span class='doccomment'>//! ```</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! to your `Cargo.toml` and</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! ```rust</span>
-<span class='doccomment'>//! extern crate libffi_sys;</span>
-<span class='doccomment'>//! ```</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! to your crate root.</span>
+<span id="38">38</span>
+<span id="39">39</span>
+</pre><pre class="rust ">
+<span class="doccomment">//! Low-level Rust bindings for [libffi](https://sourceware.org/libffi/)</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! The C libffi library provides two main facilities: assembling calls</span>
+<span class="doccomment">//! to functions dynamically, and creating closures that can be called</span>
+<span class="doccomment">//! as ordinary C functions. This is an undocumented wrapper, generated</span>
+<span class="doccomment">//! by bindgen, intended as the basis for higher-level bindings, but you</span>
+<span class="doccomment">//! can see the [C libffi</span>
+<span class="doccomment">//! documentation](http://www.atmark-techno.com/~yashi/libffi.html).</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! See [the libffi crate](https://crates.io/crates/libffi/) for a</span>
+<span class="doccomment">//! higher-level API.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! # Usage</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Building libffi-sys will build the libffi C library [from</span>
+<span class="doccomment">//! github](https://github.com/libffi/libffi), which requires that you have</span>
+<span class="doccomment">//! a working make, C compiler, automake, autoconf, and texinfo first.</span>
+<span class="doccomment">//! It’s [on crates.io](https://crates.io/crates/libffi-sys), so you</span>
+<span class="doccomment">//! can add</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```toml</span>
+<span class="doccomment">//! [dependencies]</span>
+<span class="doccomment">//! libffi-sys = &quot;0.5.3&quot;</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! to your `Cargo.toml` and</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```rust</span>
+<span class="doccomment">//! extern crate libffi_sys;</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! to your crate root.</span>
 
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>non_camel_case_types</span>)]</span>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>non_snake_case</span>)]</span>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>non_upper_case_globals</span>)]</span>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>improper_ctypes</span>)]</span>
+<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
+<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
+<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">improper_ctypes</span>)]</span>
 
-<span class='macro'>include</span><span class='macro'>!</span>(<span class='macro'>concat</span><span class='macro'>!</span>(<span class='macro'>env</span><span class='macro'>!</span>(<span class='string'>&quot;OUT_DIR&quot;</span>), <span class='string'>&quot;/generated.rs&quot;</span>));
+<span class="macro">include</span><span class="macro">!</span>(<span class="macro">concat</span><span class="macro">!</span>(<span class="macro">env</span><span class="macro">!</span>(<span class="string">&quot;OUT_DIR&quot;</span>), <span class="string">&quot;/generated.rs&quot;</span>));
 </pre>
 </section>
     <section id='search' class="content hidden"></section>
